@@ -70,7 +70,7 @@ jobs:
       - name: Configure
         run: |
           CLANG_PATH="$HOME/clang-15.0.0/bin/clang++"
-          ./configure --compiler="$CLANG_PATH" --mode=debug --ccache --download-nyan
+          ./configure --compiler="$CLANG_PATH" --mode=debug --ccache --download-nyan -D CMAKE_OSX_ARCHITECTURES=x86_64
       - name: Build
         run: make -j$(sysctl -n hw.logicalcpu) VERBOSE=1
       - name: Test
