@@ -76,11 +76,12 @@ jobs:
       - name: Test
         run: make test
       - name: Zip openage
-        working-directory: ${{github.workspace}}/openage/openage/.bin/Users-runner-clang-15-0-0-bin-clang++-debug-Oauto-sanitize-none/
+        #/Users/runner/work/openage/openage
+        working-directory: ${{github.workspace}}/.bin/Users-runner-clang-15-0-0-bin-clang++-debug-Oauto-sanitize-none/
         run: zip -y -r openage.zip ./
       - name: Upload openage
         if: github.event_name == 'workflow_dispatch'
         uses: actions/upload-artifact@v4
         with:
           name: openage.zip
-          path: ${{github.workspace}}/openage/openage/.bin/Users-runner-clang-15-0-0-bin-clang++-debug-Oauto-sanitize-none/openage.zip
+          path: ${{github.workspace}}/.bin/Users-runner-clang-15-0-0-bin-clang++-debug-Oauto-sanitize-none/openage.zip
