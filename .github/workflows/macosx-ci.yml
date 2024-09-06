@@ -14,7 +14,7 @@ jobs:
       # https://docs.github.com/en/actions/configuring-and-managing-workflows/caching-dependencies-to-speed-up-workflows
       - name: Get timestamp
         id: timestamp
-        shell: cmake -P {0}
+        shell: cmake -DCMAKE_OSX_ARCHITECTURES=x86_64 -P {0}
         run: |
           string(TIMESTAMP current_date "%Y-%m-%d-%H:%M:%S" UTC)
           message("timestamp=${current_date}" >> $GITHUB_OUTPUT)
@@ -70,7 +70,7 @@ jobs:
       - name: Configure
         run: |
           CLANG_PATH="$HOME/clang-15.0.0/bin/clang++"
-          ./configure --compiler="$CLANG_PATH" --mode=debug --ccache --download-nyan -D CMAKE_OSX_ARCHITECTURES=x86_64
+          ./configure --compiler="$CLANG_PATH" --mode=debug --ccache --download-nyan
       - name: Build
         run: make -j$(sysctl -n hw.logicalcpu) VERBOSE=1
       - name: Test
