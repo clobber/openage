@@ -57,7 +57,7 @@ jobs:
       - name: Remove python's 2to3 link so that 'brew link' does not fail
         run: rm /usr/local/bin/2to3* && rm /usr/local/bin/idle3*
       - name: Install environment helpers with homebrew
-        run: brew install --force ccache
+        run: brew install --force ccache dylibbundler
       - name: Install dependencies with homebrew
         run: brew install --force python3 libepoxy freetype fontconfig harfbuzz opus opusfile qt6 libogg libpng toml11 eigen
       - name: Install nyan dependencies with homebrew
@@ -75,9 +75,9 @@ jobs:
         run: make -j$(sysctl -n hw.logicalcpu) VERBOSE=1
       - name: Test
         run: make test
-      - name: macpack openage
+      - name: macdylibbundler openage
         working-directory: ${{github.workspace}}/.bin/Users-runner-clang-15-0-0-bin-clang++-debug-Oauto-sanitize-none/
-        run: macpack --verbose run
+        run: dylibbundler -od -b -x run -d ./libs/
       - name: Zip openage
         #/Users/runner/work/openage/openage
         working-directory: ${{github.workspace}}/.bin/Users-runner-clang-15-0-0-bin-clang++-debug-Oauto-sanitize-none/
