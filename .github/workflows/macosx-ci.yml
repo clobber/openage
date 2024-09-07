@@ -77,7 +77,7 @@ jobs:
         run: make test
       - name: macdylibbundler openage
         working-directory: ${{github.workspace}}/.bin/Users-runner-clang-15-0-0-bin-clang++-debug-Oauto-sanitize-none/
-        run: dylibbundler -od -b -x run -d ./libs/ -s libopenage -s nyan-external/bin/nyan
+        run: dylibbundler -od -b -x run -d libs -s libopenage -s nyan-external/bin/nyan
       - name: Zip openage
         #/Users/runner/work/openage/openage
         working-directory: ${{github.workspace}}/.bin/Users-runner-clang-15-0-0-bin-clang++-debug-Oauto-sanitize-none/
