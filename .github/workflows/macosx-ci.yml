@@ -66,7 +66,7 @@ jobs:
         # cython, numpy and pygments are in homebrew,
         # but "cython is keg-only, which means it was not symlinked into /usr/local"
         # numpy pulls gcc as dep? and pygments doesn't work.
-        run: pip3 install --upgrade --break-system-packages cython numpy mako lz4 pillow pygments setuptools toml
+        run: pip3 install --upgrade --break-system-packages cython numpy mako lz4 pillow pygments setuptools toml macpack
       - name: Configure
         run: |
           CLANG_PATH="$HOME/clang-15.0.0/bin/clang++"
@@ -75,6 +75,9 @@ jobs:
         run: make -j$(sysctl -n hw.logicalcpu) VERBOSE=1
       - name: Test
         run: make test
+      - name: macpack openage
+        working-directory: ${{github.workspace}}/.bin/Users-runner-clang-15-0-0-bin-clang++-debug-Oauto-sanitize-none/
+        run: macpack run
       - name: Zip openage
         #/Users/runner/work/openage/openage
         working-directory: ${{github.workspace}}/.bin/Users-runner-clang-15-0-0-bin-clang++-debug-Oauto-sanitize-none/
