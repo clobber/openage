@@ -77,7 +77,7 @@ jobs:
         run: make test
       - name: macpack openage
         working-directory: ${{github.workspace}}/.bin/Users-runner-clang-15-0-0-bin-clang++-debug-Oauto-sanitize-none/
-        run: macpack run
+        run: macpack --verbose run
       - name: Zip openage
         #/Users/runner/work/openage/openage
         working-directory: ${{github.workspace}}/.bin/Users-runner-clang-15-0-0-bin-clang++-debug-Oauto-sanitize-none/
